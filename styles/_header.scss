@@ -1,0 +1,87 @@
+.header {
+	min-height: 100vh;
+	background-image: url(../img/header.jpeg);
+	background-size: cover;
+	background-position: center top;
+	background-repeat: no-repeat;
+	display: flex;
+
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+		height: 100%;
+		align-items: center;
+	}
+
+	&__col {
+		
+		&:first-child {
+			flex-grow: 1;
+			display: flex;
+			align-items: flex-end;
+		}
+
+		&:last-child {
+			flex-grow: 1;
+			display: flex;
+			align-items: flex-end;
+			margin-bottom: 40px;
+		}
+	}
+
+	&__title {
+		font-size: 50px;
+		font-weight: 600;
+		margin-bottom: 10px;
+		transition: .3s;
+		font-family: 'StarJediSpecialEdition', Arial, Helvetica, sans-serif;
+		cursor: pointer;
+		@include scrollStyles(0.8s, 0.4s, color 0.3s ease 0s);
+
+		&:hover {
+			transition: .3s;
+			color: red;
+		}
+
+		&._active {
+			@include activeStyles
+		}
+	}
+	@media (max-width: 835px) {
+		.header {
+			&__title {
+				font-size: 35px;
+			}
+			&__subtitle {
+				font-size: 20px;
+			}
+		}
+	}
+	&__subtitle {
+		max-width: 775px;
+		font-size: 30px;
+		line-height: 1.5;
+		text-align: center;
+		cursor: pointer;
+		@include scrollStyles(1s, 0.6s, color 0.3s ease 0s);
+
+		&:hover {
+			transition: color .3s;
+			color: #4169E1;
+		}
+
+		&._active {
+			@include activeStyles
+		}
+	}
+
+	&__btn {
+		font-family: 'StarJediSpecialEdition', Arial, Helvetica, sans-serif;
+		font-size: 14px;
+		@include scrollStyles(1.2s, 1s, color 0.3s ease 0s, border-color 0.3s ease 0s);
+		&._active {
+			@include activeStyles
+		}
+	}
+}

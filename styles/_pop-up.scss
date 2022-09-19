@@ -1,0 +1,99 @@
+.pop-up {
+	height: 85vh;
+	width: 85vw;
+	padding: 0 15px;
+	background-image: url(../img/pop-up.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 30px;
+	box-shadow: 0 0 50px 50px #000;
+	position: absolute;
+	bottom: 50%;
+    left: 50%;
+    transform: translate(-300%, 50%);
+	transition: transform 0.5s linear;
+
+	&__row {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		margin-bottom: 15px;
+		position: relative;
+	}
+	
+	&__col {
+		flex-grow: 1;
+	}
+
+	&__character {
+		margin-bottom: 10px;
+		text-decoration: underline;
+
+		&-name {
+
+			&-row {
+				flex-grow: 1;
+			}
+	
+			font-size: 40px;
+			margin-top: 20px;
+			margin-bottom: 30px;
+			letter-spacing: 3px;
+			position: relative;
+			transition: .3s;
+			
+			&::after {
+				content: '';
+				position: absolute;
+				left: 0;
+				bottom: -2px;
+				height: 2px;
+				width: 0;
+				background-color: #fff;
+				transition: .3s;
+			}
+	
+			&:hover{
+				color: orangered;
+				&:after  {
+					width: 100%;
+				}
+			}
+		}
+
+		&-sc {
+			color: orangered;
+			font-style: italic;
+		}
+	}
+
+	&__card {
+		font-size: 30px;
+	}
+
+	&__btn {
+		display: flex;
+		justify-content: center;
+		padding: 15px;
+		width: 50%;
+		margin: 0 auto;
+		transition: all .3s;
+
+		& span {
+			display: inline-block;
+			transition: all .3s;
+		}
+
+		&:hover {
+			border-color: orangered;
+		
+			& span {
+				color: orangered;
+			}
+		}
+	}
+}

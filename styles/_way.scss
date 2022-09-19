@@ -1,0 +1,73 @@
+.way {
+	min-height: 300vh;
+	background-image: url(../img/way.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+	}
+
+	&__row {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+	}
+
+	&__box {
+		flex-grow: 1;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+
+		&-change {
+			justify-content: flex-start;
+		}
+	}
+
+	&__card {
+
+		&._active {
+			& .way__notes {
+				@include activeStyles;
+			}	
+		}
+		
+	}
+
+	&__notes {
+		font-family: 'StarJediSpecialEdition', Arial, Helvetica, sans-serif;
+		font-size: 24px;
+		position: relative;
+		cursor: pointer;
+		@include scrollStyles(0.8s, 0.3s);
+
+		&:after {
+			content: '';
+			position: absolute;
+			height: 2px;
+			width: 0;
+			bottom: -2px;
+			left: 0;
+			background-color: #ff99ff;
+			transition: 0.3s;
+		}
+
+		&:hover:after {
+			width: 100%;
+		}
+
+	}
+
+	@media (max-width: 835px) {
+		.way {
+			&__notes {
+				font-size: 20px;
+			}
+		}
+	}
+}

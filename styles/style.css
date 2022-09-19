@@ -1,0 +1,459 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 320px;
+  font-family: "DeathStar", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.3s;
+  color: #fff;
+}
+
+.wrapper {
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+@font-face {
+  font-family: "DeathStar";
+  src: url("../fonts/DeathStar.woff2") format("woff2"), url("../fonts/DeathStar.woff") format("woff");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "StarJediSpecialEdition";
+  src: url("../fonts/StarJediSpecialEdition.woff2") format("woff2"), url("../fonts/StarJediSpecialEdition.woff") format("woff");
+  font-style: normal;
+  font-weight: normal;
+}
+.header {
+  min-height: 100vh;
+  background-image: url(../img/header.jpeg);
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  display: flex;
+}
+.header__wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100%;
+  align-items: center;
+}
+.header__col:first-child {
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-end;
+}
+.header__col:last-child {
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 40px;
+}
+.header__title {
+  font-size: 50px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  transition: 0.3s;
+  font-family: "StarJediSpecialEdition", Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  transform: translate(0, 110%);
+  opacity: 0;
+  transition: transform 0.8s ease 0.4s, opacity 0.8s ease 0.4s, color 0.3s ease 0s;
+}
+.header__title._active {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+.header__title:hover {
+  transition: 0.3s;
+  color: red;
+}
+@media (max-width: 835px) {
+  .header .header__title {
+    font-size: 35px;
+  }
+  .header .header__subtitle {
+    font-size: 20px;
+  }
+}
+.header__subtitle {
+  max-width: 775px;
+  font-size: 30px;
+  line-height: 1.5;
+  text-align: center;
+  cursor: pointer;
+  transform: translate(0, 110%);
+  opacity: 0;
+  transition: transform 0.8s ease 0.6s, opacity 0.8s ease 0.6s, color 0.3s ease 0s;
+}
+.header__subtitle._active {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+.header__subtitle:hover {
+  transition: color 0.3s;
+  color: #4169E1;
+}
+.header__btn {
+  font-family: "StarJediSpecialEdition", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  transform: translate(0, 110%);
+  opacity: 0;
+  transition: transform 0.8s ease 1s, opacity 0.8s ease 1s, color 0.3s ease 0s, border-color 0.3s ease 0s;
+}
+.header__btn._active {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.btn {
+  display: inline-flex;
+  font-size: 16px;
+  border: 1px solid #fff;
+  letter-spacing: 0.4px;
+  line-height: 1.25;
+  border-radius: 14px;
+  text-align: center;
+  background-color: transparent;
+  padding: 8px 19px;
+  cursor: pointer;
+}
+.btn:hover {
+  border-color: green;
+}
+.btn:hover a {
+  color: green;
+}
+
+.way {
+  min-height: 300vh;
+  background-image: url(../img/way.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+}
+.way__wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.way__row {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.way__box {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.way__box-change {
+  justify-content: flex-start;
+}
+.way__card._active .way__notes {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+.way__notes {
+  font-family: "StarJediSpecialEdition", Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  position: relative;
+  cursor: pointer;
+  transform: translate(0, 110%);
+  opacity: 0;
+  transition: transform 0.8s ease 0.3s, opacity 0.8s ease 0.2s;
+}
+.way__notes:after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 0;
+  bottom: -2px;
+  left: 0;
+  background-color: #ff99ff;
+  transition: 0.3s;
+}
+.way__notes:hover:after {
+  width: 100%;
+}
+@media (max-width: 835px) {
+  .way .way__notes {
+    font-size: 20px;
+  }
+}
+
+.show {
+  min-height: 100vh;
+  background-image: url(../img/show.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  padding-bottom: 200px;
+  position: relative;
+}
+.show__wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 70px;
+}
+.show__row {
+  margin: -15px;
+}
+.show__row._active .show__col {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+.show__row:first-child {
+  margin-bottom: 50px;
+}
+.show__row:last-child {
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+.show__col {
+  flex: 1 0 20%;
+  padding: 15px;
+  transform: translate(0, 110%);
+  opacity: 0;
+  transition: transform 0.8s ease 0.5s, opacity 0.8s ease 0.5s;
+}
+@media (max-width: 945px) {
+  .show .show__col {
+    flex: 1 0 33.33%;
+  }
+}
+@media (max-width: 650px) {
+  .show .show__row:first-child {
+    margin-bottom: 20px;
+  }
+  .show .show__col {
+    flex: 1 0 50%;
+  }
+  .show .show__title {
+    font-size: 35px;
+    margin-bottom: 10px;
+  }
+  .show .show__subtitle {
+    font-size: 20px;
+  }
+  .show .show__desc {
+    font-size: 15px;
+  }
+}
+@media (max-width: 375px) {
+  .show .show__row {
+    margin: -10px;
+  }
+  .show .show__col {
+    padding: 10px;
+  }
+  .show .show__title {
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+  .show .show__subtitle {
+    font-size: 15px;
+  }
+}
+.show__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  text-align: center;
+  min-width: 210px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.show__card:not(.show__card-first):hover {
+  color: #ff99ff;
+  border: 2px double #ff99ff;
+  transform: scale(1.1);
+  box-shadow: 0px 0px 15px 5px #ff99ff;
+}
+.show__title {
+  font-size: 40px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+.show__subtitle {
+  font-size: 25px;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+.show__desc {
+  letter-spacing: 2px;
+  font-size: 20px;
+}
+.show__btn {
+  padding: 15px;
+  font-family: "StarJediSpecialEdition";
+  border-color: #ff99ff;
+  transition: all 0.3s;
+}
+.show__btn-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.show__btn-col._active .show__btn-card {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+.show__btn-card-left {
+  transform: translate(-110%, 0);
+  opacity: 0;
+  transition: transform 0.8s ease 0.3s, opacity 0.8s ease 0.3s;
+}
+.show__btn-card-right {
+  transform: translate(110%, 0);
+  opacity: 0;
+  transition: transform 0.8s ease 0.3s, opacity 0.8s ease 0.3s;
+}
+.show__btn a {
+  color: #ff99ff;
+}
+.show__btn:hover {
+  transform: scale(1.1);
+  border-color: #ff99ff;
+  box-shadow: 0px 0px 15px 5px #ff99ff;
+}
+.show__btn:hover a {
+  color: #ff99ff;
+}
+
+.count__span {
+  font-size: 35px;
+}
+
+.disable {
+  transform: scale(1.1);
+  border-color: #ccc;
+  box-shadow: 0px 0px 15px 5px #ccc;
+}
+.disable a {
+  color: #ccc;
+}
+.disable:hover {
+  border-color: #ccc;
+  box-shadow: 0px 0px 15px 5px #ccc;
+}
+
+.pop-up {
+  height: 85vh;
+  width: 85vw;
+  padding: 0 15px;
+  background-image: url(../img/pop-up.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 30px;
+  box-shadow: 0 0 50px 50px #000;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-300%, 50%);
+  transition: transform 0.5s linear;
+}
+.pop-up__row {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 15px;
+  position: relative;
+}
+.pop-up__col {
+  flex-grow: 1;
+}
+.pop-up__character {
+  margin-bottom: 10px;
+  text-decoration: underline;
+}
+.pop-up__character-name {
+  font-size: 40px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  letter-spacing: 3px;
+  position: relative;
+  transition: 0.3s;
+}
+.pop-up__character-name-row {
+  flex-grow: 1;
+}
+.pop-up__character-name::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 0;
+  background-color: #fff;
+  transition: 0.3s;
+}
+.pop-up__character-name:hover {
+  color: orangered;
+}
+.pop-up__character-name:hover:after {
+  width: 100%;
+}
+.pop-up__character-sc {
+  color: orangered;
+  font-style: italic;
+}
+.pop-up__card {
+  font-size: 30px;
+}
+.pop-up__btn {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  width: 50%;
+  margin: 0 auto;
+  transition: all 0.3s;
+}
+.pop-up__btn span {
+  display: inline-block;
+  transition: all 0.3s;
+}
+.pop-up__btn:hover {
+  border-color: orangered;
+}
+.pop-up__btn:hover span {
+  color: orangered;
+}/*# sourceMappingURL=style.css.map */
