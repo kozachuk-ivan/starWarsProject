@@ -59,7 +59,6 @@ export function introAllPersons() {
 
 	function closePopUp() {
 		popUp.style = '';
-		document.body.style = '';
 	}
 
 	async function showDetalInfo(event) {
@@ -113,7 +112,6 @@ export function introAllPersons() {
 			});
 			
 			popUp.style.cssText = `transform: translate(-50%, 50%);`;
-			document.body.style.overflow = 'hidden';
 		}
 	}
 	getHeroes(`https://swapi.dev/api/people/?page=${count}`);

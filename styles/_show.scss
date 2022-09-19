@@ -190,6 +190,35 @@
 			}
 		}
 	}
+
+	@media(max-width: 580px) {
+		.show {
+			&__btn {
+				font-size: 13px;
+
+				&-col-first {
+					margin-right: 20px;
+				}
+			}
+		}
+	}
+	@media(max-width: 460px) {
+		.show {
+			&__btn {
+				padding: 10px 5px;
+				font-size: 13px;
+				font-weight: 400;
+
+				&-col-first {
+					margin-right: 20px;
+				}
+
+				&-span {
+					margin-right: 15px;
+				}
+			}
+		}
+	}
 }
 
 .count {
