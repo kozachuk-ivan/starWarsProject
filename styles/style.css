@@ -81,15 +81,15 @@ a {
   cursor: pointer;
   transform: translate(0, 110%);
   opacity: 0;
-  transition: transform 0.8s ease 0.4s, opacity 0.8s ease 0.4s, color 0.3s ease 0s;
+  transition: transform 0.8s ease 0.4s, opacity 0.8s ease 0.4s;
+  transition: color 0.3s;
+}
+.header__title:hover {
+  color: red;
 }
 .header__title._active {
   transform: translate(0, 0);
   opacity: 1;
-}
-.header__title:hover {
-  transition: 0.3s;
-  color: red;
 }
 @media (max-width: 835px) {
   .header .header__title {
@@ -107,22 +107,23 @@ a {
   cursor: pointer;
   transform: translate(0, 110%);
   opacity: 0;
-  transition: transform 0.8s ease 0.6s, opacity 0.8s ease 0.6s, color 0.3s ease 0s;
+  transition: transform 1s ease 0.6s, opacity 1s ease 0.6s;
+  transition: color 0.3s;
+}
+.header__subtitle:hover {
+  color: #4169E1;
 }
 .header__subtitle._active {
   transform: translate(0, 0);
   opacity: 1;
-}
-.header__subtitle:hover {
-  transition: color 0.3s;
-  color: #4169E1;
 }
 .header__btn {
   font-family: "StarJediSpecialEdition", Arial, Helvetica, sans-serif;
   font-size: 14px;
   transform: translate(0, 110%);
   opacity: 0;
-  transition: transform 0.8s ease 1s, opacity 0.8s ease 1s, color 0.3s ease 0s, border-color 0.3s ease 0s;
+  transition: transform 1.2s ease 1s, opacity 1.2s ease 1s;
+  transition: border-color 0.3s;
 }
 .header__btn._active {
   transform: translate(0, 0);
@@ -186,7 +187,7 @@ a {
   cursor: pointer;
   transform: translate(0, 110%);
   opacity: 0;
-  transition: transform 0.8s ease 0.3s, opacity 0.8s ease 0.2s;
+  transition: transform 0.8s ease 0.3s, opacity 0.8s ease 0.3s;
 }
 .way__notes:after {
   content: "";
@@ -334,12 +335,12 @@ a {
   opacity: 1;
 }
 .show__btn-card-left {
-  transform: translate(-110%, 0);
+  transform: translate(0, 110%);
   opacity: 0;
   transition: transform 0.8s ease 0.3s, opacity 0.8s ease 0.3s;
 }
 .show__btn-card-right {
-  transform: translate(110%, 0);
+  transform: translate(0, 110%);
   opacity: 0;
   transition: transform 0.8s ease 0.3s, opacity 0.8s ease 0.3s;
 }
@@ -353,6 +354,27 @@ a {
 }
 .show__btn:hover a {
   color: #ff99ff;
+}
+@media (max-width: 580px) {
+  .show .show__btn {
+    font-size: 13px;
+  }
+  .show .show__btn-col-first {
+    margin-right: 20px;
+  }
+}
+@media (max-width: 460px) {
+  .show .show__btn {
+    padding: 10px 5px;
+    font-size: 13px;
+    font-weight: 400;
+  }
+  .show .show__btn-col-first {
+    margin-right: 20px;
+  }
+  .show .show__btn-span {
+    margin-right: 15px;
+  }
 }
 
 .count__span {
@@ -373,9 +395,10 @@ a {
 }
 
 .pop-up {
-  height: 85vh;
-  width: 85vw;
+  height: 100vh;
+  width: 100vw;
   padding: 0 15px;
+  min-width: 320px;
   background-image: url(../img/pop-up.jpg);
   background-position: center;
   background-repeat: no-repeat;
@@ -406,6 +429,7 @@ a {
   text-decoration: underline;
 }
 .pop-up__character-name {
+  text-align: center;
   font-size: 40px;
   margin-top: 20px;
   margin-bottom: 30px;
@@ -456,4 +480,21 @@ a {
 }
 .pop-up__btn:hover span {
   color: orangered;
+}
+@media (max-width: 500px) {
+  .pop-up .pop-up {
+    width: 100vw;
+    height: 100vh;
+    box-shadow: 0 0 50px 200px #000;
+  }
+  .pop-up .pop-up__character-name {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  .pop-up .pop-up__card {
+    font-size: 25px;
+  }
+  .pop-up .pop-up__btn {
+    width: 100%;
+  }
 }/*# sourceMappingURL=style.css.map */
