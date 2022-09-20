@@ -47,7 +47,7 @@ export function introAllPersons() {
 
 	async function showNextHeroes() {
 		count++;
-		await getHeroes(`https://swapi.dev/api/people/?page=${count}`);
+		await getHeroes(`https://swapi.dev/api/people/?page=${count}`)
 		countSpan.textContent = count;	
 	}
 
@@ -85,21 +85,23 @@ export function introAllPersons() {
 				}
 			});
 
-			await films.forEach( async (film) => {
-				for(let i = 0; i < characterFilms.children.length; i++) {
-					characterFilms.children[i].remove();
-				} 
-				let getFilm = await fetch(`${film}`)
-					.then(data => data.json())
-					.then(data => {
-						characterFilms.insertAdjacentHTML('beforeend', 
-						`
-							<li>${data.title}</li>
-						`); 
-					})
-					.then(data => popUp.style.cssText = `transform: translate(-50%, 50%);`);
-			});
-
+			(async function() {
+				films.forEach( async (film) => {
+					for(let i = 0; i < characterFilms.children.length; i++) {
+						characterFilms.children[i].remove();
+					} 
+					let getFilm = await fetch(`${film}`)
+						.then(data => data.json())
+						.then(data => {
+							characterFilms.insertAdjacentHTML('beforeend', 
+							`
+								<li>${data.title}</li>
+							`); 
+						})
+				});
+			})()
+				.then(data => popUp.style.cssText = `transform: translate(-50%, 50%);`);
+				
 			let getPlanet = await fetch(`${planet}`)
 				.then(data => data.json())
 				.then(data => characterPlanet.textContent = data.name);
