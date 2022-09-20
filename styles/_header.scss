@@ -30,6 +30,14 @@
 		}
 	}
 
+	&__card {
+		&._active {
+			& * {
+				@include activeStyles
+			}
+		}
+	}
+
 	&__title {
 		font-size: 50px;
 		font-weight: 600;
@@ -42,10 +50,6 @@
 
 		&:hover {
 			color: red;
-		}
-
-		&._active {
-			@include activeStyles
 		}
 	}
 	@media (max-width: 835px) {
@@ -70,10 +74,6 @@
 		&:hover {
 			color: #4169E1;
 		}
-
-		&._active {
-			@include activeStyles
-		}
 	}
 
 	&__btn {
@@ -81,8 +81,5 @@
 		font-size: 14px;
 		@include scrollStyles(1.2s, 1s);
 		transition: border-color 0.3s;
-		&._active {
-			@include activeStyles
-		}
 	}
 }

@@ -85,11 +85,11 @@ export function introAllPersons() {
 				}
 			});
 
-			await films.forEach(film => {
+			films.forEach( async (film) => {
 				for(let i = 0; i < characterFilms.children.length; i++) {
 					characterFilms.children[i].remove();
 				} 
-				let getFilm = fetch(`${film}`)
+				let getFilm = await fetch(`${film}`)
 					.then(data => data.json())
 					.then(data => {
 						characterFilms.insertAdjacentHTML('beforeend', 
@@ -110,7 +110,6 @@ export function introAllPersons() {
 					.then(data => data.json())
 					.then(data => characterSubspecies.textContent = data.name);
 			});
-			
 			popUp.style.cssText = `transform: translate(-50%, 50%);`;
 		}
 	}

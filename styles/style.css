@@ -72,6 +72,10 @@ a {
   align-items: flex-end;
   margin-bottom: 40px;
 }
+.header__card._active * {
+  transform: translate(0, 0);
+  opacity: 1;
+}
 .header__title {
   font-size: 50px;
   font-weight: 600;
@@ -86,10 +90,6 @@ a {
 }
 .header__title:hover {
   color: red;
-}
-.header__title._active {
-  transform: translate(0, 0);
-  opacity: 1;
 }
 @media (max-width: 835px) {
   .header .header__title {
@@ -113,10 +113,6 @@ a {
 .header__subtitle:hover {
   color: #4169E1;
 }
-.header__subtitle._active {
-  transform: translate(0, 0);
-  opacity: 1;
-}
 .header__btn {
   font-family: "StarJediSpecialEdition", Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -124,10 +120,6 @@ a {
   opacity: 0;
   transition: transform 1.2s ease 1s, opacity 1.2s ease 1s;
   transition: border-color 0.3s;
-}
-.header__btn._active {
-  transform: translate(0, 0);
-  opacity: 1;
 }
 
 .btn {
@@ -482,11 +474,6 @@ a {
   color: orangered;
 }
 @media (max-width: 500px) {
-  .pop-up .pop-up {
-    width: 100vw;
-    height: 100vh;
-    box-shadow: 0 0 50px 200px #000;
-  }
   .pop-up .pop-up__character-name {
     font-size: 30px;
     margin-bottom: 20px;

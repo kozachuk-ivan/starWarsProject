@@ -41,6 +41,6 @@ export function scrollAnimation() {
 		}
 		setTimeout(() => {
 			animOnScroll();
-		}, 300);
+		}, 500);
 	}
 }
