@@ -85,7 +85,7 @@ export function introAllPersons() {
 				}
 			});
 
-			films.forEach( async (film) => {
+			await films.forEach( async (film) => {
 				for(let i = 0; i < characterFilms.children.length; i++) {
 					characterFilms.children[i].remove();
 				} 
@@ -96,7 +96,8 @@ export function introAllPersons() {
 						`
 							<li>${data.title}</li>
 						`); 
-					});
+					})
+					.then(data => popUp.style.cssText = `transform: translate(-50%, 50%);`);
 			});
 
 			let getPlanet = await fetch(`${planet}`)
@@ -110,7 +111,6 @@ export function introAllPersons() {
 					.then(data => data.json())
 					.then(data => characterSubspecies.textContent = data.name);
 			});
-			popUp.style.cssText = `transform: translate(-50%, 50%);`;
 		}
 	}
 	getHeroes(`https://swapi.dev/api/people/?page=${count}`);
