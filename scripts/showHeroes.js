@@ -52,7 +52,7 @@ export function introAllPersons() {
 
 	async function showNextHeroes() {
 		(count >= 9) ? count = 9 : count++;
-		await getHeroes(`https://swapi.dev/api/people/?page=${count}`)
+		await getHeroes(`https://swapi.dev/api/people/?page=${count}`);
 		countSpan.textContent = count;	
 	}
 
