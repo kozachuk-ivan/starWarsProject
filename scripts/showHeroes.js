@@ -15,6 +15,7 @@ export function introAllPersons() {
 	let characterPlanet = document.querySelector('.pop-up__character-planet');
 	let characterSubspecies = document.querySelector('.pop-up__character-subspecies');
 	let count = 1;
+	let curentHeroesList;
 	countSpan.textContent = count
 
 	nextBtn.addEventListener('click', showNextHeroes);
@@ -34,14 +35,16 @@ export function introAllPersons() {
 		(prevBtn.removeEventListener('click', showPrevHeroes), showBtnLeft.classList.add('disable')) :
 		(showBtnLeft.classList.remove('disable'),prevBtn.addEventListener('click', showPrevHeroes));
 
-		let listHeroes = heroes.results;
+		let listHeroes = await heroes.results;
+
+		curentHeroesList = listHeroes;
 
 		for (let i = 0; i < showName.length; i++) {
-			showName[i].textContent = await '';
+			showName[i].textContent = '';
 		}
 
 		for (let i = 0; i < showName.length && i < listHeroes.length; i++) {
-			showName[i].textContent = await listHeroes[i].name;
+			showName[i].textContent = listHeroes[i].name;
 		}
 	}
 
@@ -63,18 +66,15 @@ export function introAllPersons() {
 
 	async function showDetalInfo(event) {
 		if(event.target.closest('.show__card') || event.target.closest('.show__desc')) {
-			let currentHeroes = await fetch(`https://swapi.dev/api/people/?page=${count}`);
-			let jsonCurentHeroes = await currentHeroes.json();
 			let parentTarget = event.target;
 			let target;
 			(parentTarget === event.target.closest('.show__card')) ? target = parentTarget.firstElementChild.textContent :
 			target = parentTarget.textContent;
-			let resulteHeroes = await jsonCurentHeroes.results;
 			let films = [];
 			let planet;
 			let species;
 			
-			await resulteHeroes.forEach(hero => {
+			await curentHeroesList.forEach(hero => {
 				if(hero.name === target) {
 					films = hero.films;
 					planet = hero.homeworld;
@@ -85,23 +85,21 @@ export function introAllPersons() {
 				}
 			});
 
-			(async function() {
-				films.forEach( async (film) => {
-					for(let i = 0; i < characterFilms.children.length; i++) {
-						characterFilms.children[i].remove();
-					} 
-					let getFilm = await fetch(`${film}`)
-						.then(data => data.json())
-						.then(data => {
-							characterFilms.insertAdjacentHTML('beforeend', 
-							`
-								<li>${data.title}</li>
-							`); 
-						})
-				});
-			})()
-				.then(data => popUp.style.cssText = `transform: translate(-50%, 50%);`);
-				
+			films.forEach( async (film) => {
+				for(let i = 0; i < characterFilms.children.length; i++) {
+					characterFilms.children[i].remove();
+				} 
+				let getFilm = await fetch(`${film}`)
+					.then(data => data.json())
+					.then(data => {
+						characterFilms.insertAdjacentHTML('beforeend', 
+						`
+							<li>${data.title}</li>
+						`); 
+					})
+					.then(data => popUp.style.cssText = `transform: translate(-50%, 50%);`);
+			});
+	
 			let getPlanet = await fetch(`${planet}`)
 				.then(data => data.json())
 				.then(data => characterPlanet.textContent = data.name);
