@@ -118,7 +118,7 @@ a {
   font-size: 14px;
   transform: translate(0, 110%);
   opacity: 0;
-  transition: transform 1.2s ease 1s, opacity 1.2s ease 1s;
+  transition: transform 1.2s ease 0.8s, opacity 1.2s ease 0.8s;
   transition: border-color 0.3s;
 }
 
