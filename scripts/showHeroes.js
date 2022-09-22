@@ -64,10 +64,12 @@ export function introAllPersons() {
 		popUp.style = '';
 		let liItems = document.querySelectorAll('.pop-up__character-films > li');
 		liItems.forEach(item => item.remove());
+		sectionShow.addEventListener('click', showDetalInfo);
 	}
 
 	async function showDetalInfo(event) {
 		if(event.target.closest('.show__card') || event.target.closest('.show__desc')) {
+			sectionShow.removeEventListener('click', showDetalInfo)
 			let parentTarget = event.target;
 			let target;
 			(parentTarget === event.target.closest('.show__card')) 

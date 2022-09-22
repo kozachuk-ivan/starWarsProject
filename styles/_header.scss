@@ -32,7 +32,7 @@
 
 	&__card {
 		&._active {
-			& * {
+			& *{
 				@include activeStyles
 			}
 		}
@@ -79,7 +79,7 @@
 	&__btn {
 		font-family: 'StarJediSpecialEdition', Arial, Helvetica, sans-serif;
 		font-size: 14px;
-		@include scrollStyles(1.2s, 1s);
+		@include scrollStyles(1.2s, 0.8s);
 		transition: border-color 0.3s;
 	}
 }
