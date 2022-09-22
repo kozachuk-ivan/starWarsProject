@@ -1,19 +1,21 @@
 export function introAllPersons() {
-	let showName = document.querySelectorAll('.show__desc');
-	let nextBtn = document.querySelector('.show__btn-card-right');
-	let prevBtn = document.querySelector('.show__btn-card-left');
-	let showBtnRight = document.querySelector('.show__btn-right');
-	let showBtnLeft = document.querySelector('.show__btn-left');
-	let countSpan = document.querySelector('.count__span');
-	let sectionShow = document.querySelector('.show');
-	let popUp = document.querySelector('.pop-up');
-	let popUpBtn = document.querySelector('.pop-up__btn-back');
-	let characterName = document.querySelector('.pop-up__character-name');
-	let characterBday = document.querySelector('.pop-up__character-bday');
-	let characterGender = document.querySelector('.pop-up__character-male');
-	let characterFilms = document.querySelector('.pop-up__character-films');
-	let characterPlanet = document.querySelector('.pop-up__character-planet');
-	let characterSubspecies = document.querySelector('.pop-up__character-subspecies');
+	const showName = document.querySelectorAll('.show__desc');
+	const nextBtn = document.querySelector('.show__btn-card-right');
+	const prevBtn = document.querySelector('.show__btn-card-left');
+	const showBtnRight = document.querySelector('.show__btn-right');
+	const showBtnLeft = document.querySelector('.show__btn-left');
+	const countSpan = document.querySelector('.count__span');
+	const sectionShow = document.querySelector('.show');
+	const popUp = document.querySelector('.pop-up');
+	const popUpBtn = document.querySelector('.pop-up__btn-back');
+	const characterName = document.querySelector('.pop-up__character-name');
+	const characterBday = document.querySelector('.pop-up__character-bday');
+	const characterGender = document.querySelector('.pop-up__character-male');
+	const characterFilms = document.querySelector('.pop-up__character-films');
+	const characterPlanet = document.querySelector('.pop-up__character-planet');
+	const characterSubspecies = document.querySelector('.pop-up__character-subspecies');
+	const preLoader = document.querySelector('.lds-dual-ring');
+
 	let count = 1;
 	let curentHeroesList;
 	countSpan.textContent = count
@@ -49,35 +51,38 @@ export function introAllPersons() {
 	}
 
 	async function showNextHeroes() {
-		count++;
+		(count > 9) ? count = 9 : count++;
 		await getHeroes(`https://swapi.dev/api/people/?page=${count}`)
 		countSpan.textContent = count;	
 	}
 
 	async function showPrevHeroes() {
-		count--;
+		(count <= 1) ? count = 1 : count--;
 		await getHeroes(`https://swapi.dev/api/people/?page=${count}`);
 		countSpan.textContent = count;
 	}
 
 	function closePopUp() {
 		popUp.style = '';
-		let liItems = document.querySelectorAll('.pop-up__character-films > li');
+		const liItems = document.querySelectorAll('.pop-up__character-films > li');
 		liItems.forEach(item => item.remove());
 		sectionShow.addEventListener('click', showDetalInfo);
 	}
 
 	async function showDetalInfo(event) {
 		if(event.target.closest('.show__card') || event.target.closest('.show__desc')) {
-			sectionShow.removeEventListener('click', showDetalInfo)
+			sectionShow.removeEventListener('click', showDetalInfo);
+			preLoader.setAttribute('style', 'display: flex; background-color: rgba(0, 0, 0, 0.9);');
+			let getFilm;
+			let getSpacies;
 			let parentTarget = event.target;
 			let target;
-			(parentTarget === event.target.closest('.show__card')) 
-			? target = parentTarget.firstElementChild.textContent 
-			: target = parentTarget.textContent;
 			let films = [];
 			let planet;
 			let species;
+			(parentTarget === event.target.closest('.show__card')) 
+			? target = parentTarget.firstElementChild.textContent 
+			: target = parentTarget.textContent;
 			
 			await curentHeroesList.forEach(hero => {
 				if(hero.name === target) {
@@ -90,8 +95,8 @@ export function introAllPersons() {
 				}
 			});
 
-			films.forEach( async (film) => {
- 				let getFilm = await fetch(`${film}`)
+			await films.forEach((film) => {
+ 				getFilm = fetch(`${film}`)
 					.then(data => data.json())
 					.then(data => {
 						characterFilms.insertAdjacentHTML('beforeend', 
@@ -99,20 +104,23 @@ export function introAllPersons() {
 							<li>${data.title}</li>
 						`); 
 					})
-					.then(data => popUp.style.cssText = `transform: translate(-50%, 50%);`);
 			});
 	
-			let getPlanet = await fetch(`${planet}`)
+			const getPlanet = await fetch(`${planet}`)
 				.then(data => data.json())
 				.then(data => characterPlanet.textContent = data.name);
 
 			characterSubspecies.textContent = 'unknown';
 
 			await species.forEach(item => {
-				let getSpacies = fetch(`${item}`)
+				getSpacies = fetch(`${item}`)
 					.then(data => data.json())
 					.then(data => characterSubspecies.textContent = data.name);
 			});
+
+			Promise.all([getFilm, getPlanet, getSpacies])
+				.then(() => preLoader.removeAttribute('style'))
+				.then(() => popUp.style.cssText = `transform: translate(-50%, 50%);`);
 		}
 	}
 	getHeroes(`https://swapi.dev/api/people/?page=${count}`);
