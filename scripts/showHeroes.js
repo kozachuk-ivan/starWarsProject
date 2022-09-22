@@ -62,14 +62,17 @@ export function introAllPersons() {
 
 	function closePopUp() {
 		popUp.style = '';
+		let liItems = document.querySelectorAll('.pop-up__character-films > li');
+		liItems.forEach(item => item.remove());
 	}
 
 	async function showDetalInfo(event) {
 		if(event.target.closest('.show__card') || event.target.closest('.show__desc')) {
 			let parentTarget = event.target;
 			let target;
-			(parentTarget === event.target.closest('.show__card')) ? target = parentTarget.firstElementChild.textContent :
-			target = parentTarget.textContent;
+			(parentTarget === event.target.closest('.show__card')) 
+			? target = parentTarget.firstElementChild.textContent 
+			: target = parentTarget.textContent;
 			let films = [];
 			let planet;
 			let species;
@@ -86,10 +89,7 @@ export function introAllPersons() {
 			});
 
 			films.forEach( async (film) => {
-				for(let i = 0; i < characterFilms.children.length; i++) {
-					characterFilms.children[i].remove();
-				} 
-				let getFilm = await fetch(`${film}`)
+ 				let getFilm = await fetch(`${film}`)
 					.then(data => data.json())
 					.then(data => {
 						characterFilms.insertAdjacentHTML('beforeend', 
