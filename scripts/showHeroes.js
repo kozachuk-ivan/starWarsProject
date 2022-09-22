@@ -69,7 +69,7 @@ export function introAllPersons() {
 
 	async function showDetalInfo(event) {
 		if(event.target.closest('.show__card') || event.target.closest('.show__desc')) {
-			sectionShow.removeEventListener('click', showDetalInfo);
+			sectionShow.removeEventListener('click', showDetalInfo)
 			let parentTarget = event.target;
 			let target;
 			(parentTarget === event.target.closest('.show__card')) 
