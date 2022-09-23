@@ -494,7 +494,7 @@ a {
   height: 100%;
 }
 .lds-dual-ring::after {
-  content: " ";
+  content: "";
   display: block;
   width: 200px;
   height: 200px;
