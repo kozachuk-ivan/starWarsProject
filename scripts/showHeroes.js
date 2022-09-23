@@ -51,14 +51,18 @@ export function introAllPersons() {
 	}
 
 	async function showNextHeroes() {
-		(count >= 9) ? count = 9 : count++;
-		await getHeroes(`https://swapi.dev/api/people/?page=${count}`);
+		preLoader.setAttribute('style', 'display: flex; background-color: rgba(0, 0, 0, 0.9);');
+		count++;
+		await getHeroes(`https://swapi.dev/api/people/?page=${count}`)
+			.then(() => preLoader.removeAttribute('style'));
 		countSpan.textContent = count;	
 	}
 
 	async function showPrevHeroes() {
-		(count <= 1) ? count = 1 : count--;
-		await getHeroes(`https://swapi.dev/api/people/?page=${count}`);
+		preLoader.setAttribute('style', 'display: flex; background-color: rgba(0, 0, 0, 0.9);');
+		count--;
+		await getHeroes(`https://swapi.dev/api/people/?page=${count}`)
+			.then(() =>preLoader.removeAttribute('style'));
 		countSpan.textContent = count;
 	}
 
