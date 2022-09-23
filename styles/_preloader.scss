@@ -1,6 +1,8 @@
 .lds-dual-ring {
-	position: absolute;
+	position: fixed;
 	display: none;
+	top: 0;
+	left: 0;
 	align-items: center;
 	justify-content: center;
 	width: 100%;
