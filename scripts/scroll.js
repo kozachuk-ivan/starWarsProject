@@ -7,7 +7,7 @@ export function scrollIntoView() {
 			event.preventDefault()
 		}
 		watchHero.scrollIntoView({
-			block: 'start',
+			block: 'end',
 			inline: "nearest",
 			behavior: 'smooth'
 		});
@@ -41,6 +41,6 @@ export function scrollAnimation() {
 		}
 		setTimeout(() => {
 			animOnScroll();
-		}, 500);
+		}, 400);
 	}
 }
