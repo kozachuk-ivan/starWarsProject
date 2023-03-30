@@ -25,15 +25,16 @@ export async function introAllPersons() {
 	}
 
 	nextBtn.addEventListener('click', showNextHeroesEventListener);
-	prevBtn.addEventListener('click', () => showPrevHeroesEventListener);
+	prevBtn.addEventListener('click', showPrevHeroesEventListener);
 	sectionShow.addEventListener('click', showDetailHeroInfo);
 	popUpBtn.addEventListener('click', closePopUp);
 
 	async function showNextOrPrevHeroes(nextOrPrev) {
 		preLoader.setAttribute('style', 'display: flex; background-color: rgba(0, 0, 0, 0.9);');
 		nextOrPrev === 'next' ? count++ : count--;
-		currentHeroesList = await getHeroes(count, showNextHeroesEventListener,showPrevHeroesEventListener)
-			.then(() => preLoader.removeAttribute('style'));
+		
+		currentHeroesList = await getHeroes(count, showNextHeroesEventListener, showPrevHeroesEventListener)
+		preLoader.removeAttribute('style')
 		countSpan.textContent = count;	
 	}
 
@@ -58,6 +59,7 @@ export async function introAllPersons() {
 			} else {
 				target = event.target.textContent;
 			}
+					console.log(currentHeroesList);
 
 			currentHeroesList.forEach(hero => {				
 				if(hero.name === target) {
