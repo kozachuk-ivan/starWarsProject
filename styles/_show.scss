@@ -1,245 +1,241 @@
 .show {
-	min-height: 100vh;
-	background-image: url(../img/show.jpg);
-	background-position: center center;
-	background-size: cover;
-	background-repeat: no-repeat;
-	display: flex;
-	padding-bottom: 200px;
-	position: relative;
+    box-shadow: 0px 20px 30px 40px black;
+    min-height: 100vh;
+    background-image: url(../img/show.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    padding: 100px 0 200px 0;
+    position: relative;
 
-	&__wrapper {
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		margin-bottom: 70px;
-	}
+    &__wrapper {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 70px;
+    }
 
-	&__row {
+    &__hero-list {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
 
-		background-color: rgba(0,0,0,0.5);
+    &__row {
+        &._active {
+            & .show__col {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+        }
 
+        &:first-child {
+            margin-bottom: 50px;
+        }
 
-		&._active {
-			& .show__col {
-				transform: translate(0, 0);
-				opacity: 1;
-			}	
-		}
+        &:last-child {
+            flex-grow: 1;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        margin: -15px;
+    }
 
-		&:first-child {
-			margin-bottom: 50px;
-		}
+    &__col {
+        flex: 1 0 20%;
+        padding: 15px;
+        transform: translate(0, 110%);
+        opacity: 0;
+        transition: transform 0.8s ease 0.5s, opacity 0.8s ease 0.5s;
+    }
 
-		&:last-child {
-			flex-grow: 1;
-			display: flex;
-			flex-wrap: wrap;
-		}
-		margin: -15px;
-	}
+    @media (max-width: 945px) {
+        .show {
+            &__col {
+                flex: 1 0 33.33%;
+            }
+        }
+    }
 
-	&__col {
-		flex: 1 0 20%;
-		padding: 15px;
-		transform: translate(0, 110%);
-		opacity: 0;
-		transition: transform 0.8s ease 0.5s, opacity 0.8s ease 0.5s;
-	}
+    @media (max-width: 650px) {
+        .show {
+            &__row {
+                &:first-child {
+                    margin-bottom: 20px;
+                }
+            }
 
-	@media (max-width: 945px) {
-		.show {
-			&__col {
-				flex: 1 0 33.33%;
-			}
-		}
-	}
+            &__col {
+                flex: 1 0 50%;
+            }
 
-	@media (max-width: 650px) {
-		.show {
+            &__title {
+                font-size: 35px;
+                margin-bottom: 10px;
+            }
 
-			&__row  {
-				&:first-child {
-					margin-bottom: 20px;
-				}
-			}
+            &__subtitle {
+                font-size: 20px;
+            }
 
-			&__col {
-				flex: 1 0 50%;
-			}
+            &__desc {
+                font-size: 15px;
+            }
+        }
+    }
 
-			&__title {
-				font-size: 35px;
-				margin-bottom: 10px;
-			}
+    @media (max-width: 375px) {
+        .show {
+            &__row {
+                margin: -10px;
+            }
 
-			&__subtitle {
-				font-size: 20px;
-			}
+            &__col {
+                padding: 10px;
+            }
 
-			&__desc {
-				font-size: 15px;
-			}
-		}
-	}
+            &__title {
+                font-size: 25px;
+                margin-bottom: 10px;
+            }
 
-	@media (max-width: 375px) {
-		.show {
+            &__subtitle {
+                font-size: 15px;
+            }
+        }
+    }
 
-			&__row  {
-				margin: -10px;
-			}
+    &__card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        border: 2px solid #fff;
+        border-radius: 50px;
+        text-align: center;
+        min-width: 210px;
+        transition: 0.3s;
+        cursor: pointer;
 
-			&__col {
-				padding: 10px;
-			}
+        &:not(&-first):hover {
+            color: #ff99ff;
+            border: 2px double #ff99ff;
+            transform: scale(1.1);
+            box-shadow: 0px 0px 15px 5px #ff99ff;
+        }
+    }
 
-			&__title {
-				font-size: 25px;
-				margin-bottom: 10px;
-			}
+    &__title {
+        font-size: 40px;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+        margin-top: 5px;
+    }
 
-			&__subtitle {
-				font-size: 15px;
-			}
+    &__subtitle {
+        font-size: 25px;
+        letter-spacing: 2px;
+        margin-bottom: 5px;
+    }
 
-		}
-	}
+    &__desc {
+        letter-spacing: 2px;
+        font-size: 20px;
+    }
 
-	&__card {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		height: 100%;
-		border: 2px solid #fff;
-		border-radius: 50px;
-		text-align: center;
-		min-width: 210px;
-		transition: .3s;
-		cursor: pointer;
+    &__btn {
+        padding: 15px;
+        font-family: 'StarJediSpecialEdition';
+        border-color: #ff99ff;
+        transition: all 0.3s;
 
-		&:not(&-first):hover {
-			color: #ff99ff;
-			border: 2px double #ff99ff;
-			transform: scale(1.1);
-			box-shadow: 0px 0px 15px 5px #ff99ff;
-		}
-	}
-	
+        &-row {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
 
-	&__title {
-		font-size: 40px;
-		letter-spacing: 2px;
-		margin-bottom: 20px;
-		margin-top: 5px;
-	}
+        &-col {
+            &._active {
+                & .show__btn-card {
+                    @include activeStyles;
+                }
+            }
+        }
 
-	&__subtitle {
-		font-size: 25px;
-		letter-spacing: 2px;
-		margin-bottom: 5px;
-	}
+        &-card {
+            &-left {
+                @include scrollStyles(0.8s, 0.3s);
+            }
 
-	&__desc {
-		letter-spacing: 2px;
-		font-size: 20px;
-	}
+            &-right {
+                @include scrollStyles(0.8s, 0.3s);
+            }
+        }
 
-	&__btn {
-		padding: 15px;
-		font-family: 'StarJediSpecialEdition';
-		border-color: #ff99ff;
-		transition: all .3s;
+        & a {
+            color: #ff99ff;
+        }
 
-		&-row {
-			display: flex;
-			justify-content: space-around;
-			align-items: center;
-		}
+        &:hover {
+            transform: scale(1.1);
+            border-color: #ff99ff;
+            box-shadow: 0px 0px 15px 5px #ff99ff;
 
-		&-col {
-			&._active {
-				& .show__btn-card{
-					@include activeStyles;
-				}	
-			}
-		}
+            & a {
+                color: #ff99ff;
+            }
+        }
+    }
 
-		&-card {
+    @media (max-width: 580px) {
+        .show {
+            &__btn {
+                font-size: 13px;
 
-			&-left {
-				@include scrollStyles(0.8s, 0.3s);
-			}
+                &-col-first {
+                    margin-right: 20px;
+                }
+            }
+        }
+    }
+    @media (max-width: 460px) {
+        .show {
+            &__btn {
+                padding: 10px 5px;
+                font-size: 13px;
+                font-weight: 400;
 
-			&-right {
-				@include scrollStyles(0.8s, 0.3s);
-			}
-		}
+                &-col-first {
+                    margin-right: 20px;
+                }
 
-		& a {
-			color: #ff99ff;
-		}
-
-		&:hover {
-			transform: scale(1.1);
-			border-color: #ff99ff;
-			box-shadow: 0px 0px 15px 5px #ff99ff;
-
-			& a {
-				color: #ff99ff;
-			}
-		}
-	}
-
-	@media(max-width: 580px) {
-		.show {
-			&__btn {
-				font-size: 13px;
-
-				&-col-first {
-					margin-right: 20px;
-				}
-			}
-		}
-	}
-	@media(max-width: 460px) {
-		.show {
-			&__btn {
-				padding: 10px 5px;
-				font-size: 13px;
-				font-weight: 400;
-
-				&-col-first {
-					margin-right: 20px;
-				}
-
-				&-span {
-					margin-right: 15px;
-				}
-			}
-		}
-	}
+                &-span {
+                    margin-right: 15px;
+                }
+            }
+        }
+    }
 }
 
 .count {
-	&__span {
-		font-size: 35px;
-	}
+    &__span {
+        font-size: 35px;
+    }
 }
 
 .disable {
-	transform: scale(1.1);
-	border-color: #ccc;
-	box-shadow: 0px 0px 15px 5px #ccc;
+    transform: scale(1.1);
+    border-color: #ccc;
+    box-shadow: 0px 0px 15px 5px #ccc;
 
-	& a {
-		color: #ccc;
-	}
+    & a {
+        color: #ccc;
+    }
 
-	&:hover {
-		border-color: #ccc;
-		box-shadow: 0px 0px 15px 5px #ccc;
-	}
+    &:hover {
+        border-color: #ccc;
+        box-shadow: 0px 0px 15px 5px #ccc;
+    }
 }
